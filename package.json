@@ -1,0 +1,37 @@
+{
+  "name": "dsh-anchorbrowser",
+  "version": "0.1.0",
+  "description": "Anchor Browser skill for DeepSeek Harness — cloud browser automation via the TypeScript SDK.",
+  "type": "module",
+  "main": "./dsh-plugin.js",
+  "exports": {
+    ".": "./dsh-plugin.js"
+  },
+  "files": [
+    "dsh-plugin.js",
+    "cordis.patch.yml",
+    "skills/anchorbrowser/**/*"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anchorbrowser/anchorbrowser-plugin.git"
+  },
+  "homepage": "https://anchorbrowser.io",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "anchorbrowser",
+    "browser",
+    "automation"
+  ],
+  "author": "AnchorBrowser",
+  "license": "MIT"
+}

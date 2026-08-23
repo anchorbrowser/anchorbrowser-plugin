@@ -1,0 +1,66 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate plugin structure
+        run: node scripts/validate-template.mjs
+
+  # Tags plugin.json's current committed version if no matching tag exists
+  # yet. Checked against tag existence, not a commit-to-commit diff, so a
+  # version bump split across multiple commits (e.g. an unsquashed merge)
+  # still gets tagged the moment the state lands on main. Never pushes to
+  # main itself (only a new tag ref), so this works regardless of branch
+  # protection on main. The pushed tag is what triggers release.yml to
+  # actually build and publish the release.
+  tag-release:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Tag plugin.json's version if untagged
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(node -pe "JSON.parse(require('fs').readFileSync('plugin.json', 'utf8')).version")
+          TAG="v${VERSION}"
+
+          if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+            echo "Tag ${TAG} already exists."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "$TAG"
+          git push origin "$TAG"
+
+          # A tag pushed with the default GITHUB_TOKEN does not trigger
+          # other workflows' push:tags events (GitHub's loop-prevention),
+          # so explicitly dispatch release.yml instead of relying on the
+          # push trigger to fire. release.yml's workflow_dispatch only
+          # exists on main, not on the tag itself, so dispatch against
+          # main and pass the tag as an input for it to check out.
+          gh workflow run release.yml --repo "${{ github.repository }}" -f tag="$TAG"

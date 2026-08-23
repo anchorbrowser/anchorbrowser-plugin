@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Install Anchor Browser in Hermes</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: #0b0b0b;
+      color: #f4f4f4;
+    }
+    main {
+      width: min(36rem, calc(100% - 2rem));
+      text-align: center;
+    }
+    h1 { font-size: 1.4rem; font-weight: 650; margin: 0 0 0.5rem; }
+    p { margin: 0 0 1.25rem; color: #b3b3b3; line-height: 1.5; }
+    a.button {
+      display: inline-block;
+      padding: 0.75rem 1.15rem;
+      border-radius: 10px;
+      background: #5b4bdb;
+      color: #fff;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    pre {
+      margin: 1.25rem 0 0;
+      padding: 0.85rem 1rem;
+      overflow-x: auto;
+      text-align: left;
+      border-radius: 10px;
+      background: #161616;
+      color: #e8e8e8;
+      font-size: 0.85rem;
+    }
+  </style>
+  <script>
+    const HERMES_URL = "hermes://plugin/install?repo=anchorbrowser/anchorbrowser-plugin&enable=1";
+    window.location.replace(HERMES_URL);
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Opening Hermes</h1>
+    <p>If Hermes Desktop does not open, click the button or run the command below.</p>
+    <a class="button" href="hermes://plugin/install?repo=anchorbrowser/anchorbrowser-plugin&enable=1">Open Hermes</a>
+    <pre>hermes plugins install anchorbrowser/anchorbrowser-plugin --enable</pre>
+  </main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+name: anchorbrowser
+version: 0.1.0
+description: "Anchor Browser cloud Chromium backend. Requires ANCHOR_API_KEY or ANCHORBROWSER_API_KEY. Set browser.cloud_provider: anchorbrowser."
+author: AnchorBrowser
+kind: backend
+provides_browser_providers:
+  - anchorbrowser
