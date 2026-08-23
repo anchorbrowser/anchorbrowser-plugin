@@ -1,0 +1,12 @@
+{
+  "name": "anchorbrowser",
+  "version": "0.1.0",
+  "description": "Browser automation for AI agents: navigate, extract, screenshot, and interact with real web pages via the AnchorBrowser TypeScript SDK.",
+  "author": {
+    "name": "AnchorBrowser"
+  },
+  "homepage": "https://anchorbrowser.io",
+  "repository": "https://github.com/anchorbrowser/AnchorBrowser-SDK-Typescript",
+  "license": "MIT",
+  "skills": "./skills/"
+}

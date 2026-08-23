@@ -1,0 +1,5 @@
+name: anchorbrowser
+version: 0.1.0
+description: Browser automation for AI agents via the AnchorBrowser TypeScript SDK
+requires_env:
+  - ANCHORBROWSER_API_KEY
