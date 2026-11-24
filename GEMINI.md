@@ -7,7 +7,7 @@ Docs: [SDK reference](https://docs.anchorbrowser.io/sdk-reference/overview) · s
 ## Setup Check
 
 ```bash
-echo "$ANCHORBROWSER_API_KEY"
+[ -n "${ANCHORBROWSER_API_KEY:-}" ] && echo "ANCHORBROWSER_API_KEY is set" || echo "ANCHORBROWSER_API_KEY is missing"
 ```
 
 Install the `anchorbrowser` package from npm if it is not already in the project.
