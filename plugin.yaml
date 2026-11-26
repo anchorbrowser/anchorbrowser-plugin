@@ -1,7 +1,16 @@
 name: anchorbrowser
 version: 0.1.0
-description: "Anchor Browser cloud Chromium backend. Requires ANCHOR_API_KEY or ANCHORBROWSER_API_KEY. Set browser.cloud_provider: anchorbrowser."
+description: "Anchor Browser cloud Chromium backend: residential proxies by country, captcha solving, extra stealth, saved profiles and managed logins. Requires ANCHOR_API_KEY or ANCHORBROWSER_API_KEY. Set browser.cloud_provider: anchorbrowser."
 author: AnchorBrowser
 kind: backend
 provides_browser_providers:
   - anchorbrowser
+requires_hermes: '>=0.21.6'
+requires_env:
+  - name: ANCHOR_API_KEY
+    description: "Anchor Browser API key (ANCHORBROWSER_API_KEY is also read). No account? Run: hermes anchorbrowser setup"
+    url: "https://app.anchorbrowser.io/api-keys"
+    secret: true
+license: MIT
+homepage: https://github.com/anchorbrowser/anchorbrowser-plugin
+tags: [browser, cloud-browser, proxy, stealth]

@@ -6,14 +6,12 @@ from pathlib import Path
 
 from .agent_access import (
     anchor_command,
-    install_post_setup_hook,
     register_cli,
 )
 from .provider import AnchorBrowserProvider
 
 
 def register(ctx) -> None:
-    install_post_setup_hook()
     ctx.register_browser_provider(AnchorBrowserProvider())
     ctx.register_cli_command(
         name="anchorbrowser",

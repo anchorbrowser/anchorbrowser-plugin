@@ -1,0 +1,43 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "anchorbrowser-mcp",
+  "version": "0.1.0",
+  "description": "Anchor Browser tools for Hermes: web tasks in a cloud browser, the action index of deterministic site recipes, managed logins, sessions, saved tasks, and step-by-step control of a live browser",
+  "author": {
+    "name": "AnchorBrowser",
+    "url": "https://anchorbrowser.io"
+  },
+  "homepage": "https://github.com/anchorbrowser/anchorbrowser-plugin/tree/main/hermes-mcp",
+  "repository": "https://github.com/anchorbrowser/anchorbrowser-plugin",
+  "license": "MIT",
+  "keywords": [
+    "browser",
+    "cloud-browser",
+    "web-automation",
+    "mcp",
+    "stealth",
+    "proxy"
+  ],
+  "extensions": {
+    "com.nousresearch.hermes": {
+      "config_schema": {
+        "api_key": {
+          "type": "secret",
+          "env": "ANCHORBROWSER_API_KEY",
+          "label": "Anchor Browser API key"
+        }
+      },
+      "servers": {
+        "anchor": {
+          "trust": "untrusted"
+        },
+        "anchor-actions": {
+          "trust": "untrusted"
+        },
+        "anchor-browser": {
+          "trust": "untrusted"
+        }
+      }
+    }
+  }
+}

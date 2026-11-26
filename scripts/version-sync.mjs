@@ -9,6 +9,7 @@ export const VERSION_TARGET_PATHS = [
   path.join(".cursor-plugin", "plugin.json"),
   path.join(".grok-plugin", "plugin.json"),
   path.join(".hermes-plugin", "plugin.json"),
+  path.join("hermes-mcp", "plugin.json"),
   "gemini-extension.json",
   "package.json",
 ];

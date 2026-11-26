@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "anchor": {
+      "type": "streamable-http",
+      "url": "https://api.anchorbrowser.io/v1/mcp",
+      "headers": { "anchor-api-key": "${ANCHORBROWSER_API_KEY}" }
+    },
+    "anchor-actions": {
+      "type": "streamable-http",
+      "url": "https://api.anchorbrowser.io/v1/mcp/actions",
+      "headers": { "anchor-api-key": "${ANCHORBROWSER_API_KEY}" }
+    },
+    "anchor-browser": {
+      "type": "streamable-http",
+      "url": "https://api.anchorbrowser.io/v1/mcp/browser",
+      "headers": { "anchor-api-key": "${ANCHORBROWSER_API_KEY}" }
+    }
+  }
+}
