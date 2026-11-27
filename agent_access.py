@@ -27,6 +27,7 @@ import requests
 
 _API_ROOT = "https://api.anchorbrowser.io"
 _DOCS = "https://docs.anchorbrowser.io/quickstart/agent-access"
+_KEY_NAMES = ("ANCHOR_API_KEY", "ANCHORBROWSER_API_KEY")
 _MAX_GET_HOPS = 6
 
 
@@ -153,8 +154,9 @@ def persist_pasted_key(api_key: str) -> str:
         raise RuntimeError("No API key provided.")
     from hermes_cli.config import save_env_value
 
-    save_env_value("ANCHOR_API_KEY", key)
-    os.environ["ANCHOR_API_KEY"] = key
+    for name in _KEY_NAMES:
+        save_env_value(name, key)
+        os.environ[name] = key
     return key
 
 
@@ -188,10 +190,10 @@ def _tty() -> bool:
 
 
 def run_setup() -> None:
-    """Require a live ANCHOR_API_KEY. Used by Run setup and ``hermes anchorbrowser setup``.
+    """Require a live ANCHOR_API_KEY. Used by ``hermes anchorbrowser setup``.
 
-    Desktop's post-setup spawn has no TTY, so a missing key fails the hook
-    instead of reporting success. A terminal can paste a key or finish Agent Access.
+    Without a TTY a missing key fails instead of reporting success. A terminal
+    can paste a key or finish Agent Access.
     """
     print("Anchor Browser setup requires a valid ANCHOR_API_KEY.")
     key = current_api_key()
@@ -233,47 +235,6 @@ def run_setup() -> None:
     print("ANCHOR_API_KEY is set and accepted by Anchor.")
 
 
-def _anchor_provider_selected() -> bool:
-    try:
-        from hermes_cli.config import load_config
-
-        cfg = load_config() or {}
-        browser = cfg.get("browser") if isinstance(cfg, dict) else {}
-        return str((browser or {}).get("cloud_provider") or "").strip() == "anchorbrowser"
-    except Exception:
-        return False
-
-
-def install_post_setup_hook() -> None:
-    """Take over Run setup when Hermes has no plugin post-setup dispatcher.
-
-    Desktop/CLI always spawn ``hermes tools post-setup <key>``. Core only
-    implements hardcoded keys; we declare ``browserbase`` (same as Firecrawl)
-    so the button is allowed, then require Anchor auth before that hook
-    can succeed.
-    """
-    try:
-        from hermes_cli import tools_config
-    except Exception:
-        return
-    original = tools_config._run_post_setup
-    if getattr(original, "_anchorbrowser_setup", False):
-        return
-
-    def wrapped(post_setup_key: str):
-        ours = post_setup_key == "anchorbrowser" or (
-            post_setup_key == "browserbase" and _anchor_provider_selected()
-        )
-        if ours:
-            run_setup()
-            if post_setup_key == "anchorbrowser":
-                return
-        return original(post_setup_key)
-
-    wrapped._anchorbrowser_setup = True  # type: ignore[attr-defined]
-    tools_config._run_post_setup = wrapped
-
-
 def persist_api_key(result: Dict[str, Any]) -> str:
     """Write ``api_key`` (and optional identity token) to the profile ``.env``."""
     api_key = result.get("api_key")
@@ -284,8 +245,9 @@ def persist_api_key(result: Dict[str, Any]) -> str:
 
     from hermes_cli.config import save_env_value
 
-    save_env_value("ANCHOR_API_KEY", str(api_key))
-    os.environ["ANCHOR_API_KEY"] = str(api_key)
+    for name in _KEY_NAMES:
+        save_env_value(name, str(api_key))
+        os.environ[name] = str(api_key)
 
     auth = result.get("auth") if isinstance(result.get("auth"), dict) else {}
     identity = result.get("agent_identity_token") or auth.get("agent_identity_token")

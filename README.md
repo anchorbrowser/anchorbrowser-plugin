@@ -275,6 +275,16 @@ Then pick **Anchor Browser** in `hermes tools`, or set `browser.cloud_provider` 
 
 The skill is also registered as `anchorbrowser:anchorbrowser`.
 
+Proxy country, captcha solving, extra stealth, saved profiles, managed logins, extensions, timeouts and the
+rest of Anchor's session options are plain settings. The full list is in [docs/hermes.md](docs/hermes.md).
+
+For Anchor's own tools inside Hermes (web tasks from a prompt, the action index, managed logins, saved tasks,
+step-by-step control of a live browser), add the MCP package. It registers Anchor's three hosted MCP servers:
+
+```bash
+hermes plugins install "anchorbrowser/anchorbrowser-plugin#hermes-mcp" --enable
+```
+
 Docs: [Hermes plugins](https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins).
 
 Skill tap only (no browser backend):
@@ -314,6 +324,7 @@ Install the `anchorbrowser` package from npm when using the TypeScript SDK.
 | `.agents/plugins/marketplace.json` | Generic `.agents` marketplace |
 | `.grok-plugin/plugin.json` | Grok plugin |
 | `.hermes-plugin/plugin.json` | Hermes Agent plugin |
+| `hermes-mcp/` | Hermes Agent MCP package (Anchor's hosted MCP servers) |
 | `gemini-extension.json` | Gemini CLI extension (`GEMINI.md` context file) |
 | `package.json` + `cordis.patch.yml` | DeepSeek Harness bundle (`dsh-anchorbrowser`) |
 
