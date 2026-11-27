@@ -1,9 +1,9 @@
 ---
 name: anchorbrowser
-description: "Use this skill when the user needs web automation with the AnchorBrowser TypeScript SDK (`anchorbrowser`): agent tasks, sessions, screenshots, fetch, Playwright-over-CDP, identities, and predefined tasks. Use when the user asks to navigate pages, extract data, fill forms, take screenshots, or run a cloud browser."
+description: "Use this skill when the user needs web automation with the Anchor Browser TypeScript SDK (`anchorbrowser`): agent tasks, sessions, screenshots, fetch, Playwright-over-CDP, identities, and predefined tasks. Use when the user asks to navigate pages, extract data, fill forms, take screenshots, or run a cloud browser."
 ---
 
-# AnchorBrowser TypeScript SDK
+# Anchor Browser TypeScript SDK
 
 Use the [`anchorbrowser`](https://www.npmjs.com/package/anchorbrowser) npm package. Do **not** use the deprecated `anchorbrowser` CLI (`@anchor-browser/cli`).
 

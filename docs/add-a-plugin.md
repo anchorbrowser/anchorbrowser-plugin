@@ -1,10 +1,14 @@
 # Repo layout
 
-This repo is a **static, single-plugin catalog** — repo root **is** the `anchorbrowser` plugin, one plugin per repo. No build step. Most clients get a `SKILL.md` that drives the TypeScript SDK. Hermes also gets a working [browser provider](https://hermes-agent.nousresearch.com/docs/developer-guide/browser-provider-plugin) (`provider.py`) that creates an Anchor session and returns a CDP URL. The root plugin carries no MCP config. Hermes' MCP servers live in `hermes-mcp/`, where the key is a `${ANCHORBROWSER_API_KEY}` reference that Hermes fills in at run time, so no key is stored in this public, git-pinned repo.
+This repo is a **static, single-plugin catalog** — repo root **is** the plugin, one plugin per repo. No build step. Most clients get a `SKILL.md` that drives the TypeScript SDK. Hermes also gets a working [browser provider](https://hermes-agent.nousresearch.com/docs/developer-guide/browser-provider-plugin) (`provider.py`) that creates an Anchor session and returns a CDP URL. The root plugin carries no MCP config. Hermes' MCP servers live in `hermes-mcp/`, where the key is a `${ANCHORBROWSER_API_KEY}` reference that Hermes fills in at run time, so no key is stored in this public, git-pinned repo.
 
-If AnchorBrowser ever needs a second distinct plugin, it belongs in its own dedicated repo — not nested inside this one. A nested `plugins/<name>/` layout breaks third-party tools (e.g. Hermes Agent's skill "tap") that scan for `skills/` at repo root by convention.
+If Anchor Browser ever needs a second distinct plugin, it belongs in its own dedicated repo — not nested inside this one. A nested `plugins/<name>/` layout breaks third-party tools (e.g. Hermes Agent's skill "tap") that scan for `skills/` at repo root by convention.
 
 `hermes-mcp/` is the one exception, and it is not a second product. Hermes loads MCP servers only from a portable `plugin.json` package, and a folder that has a native `plugin.yaml` (the repo root) is never read as one. The package installs with `hermes plugins install "anchorbrowser/anchorbrowser-plugin#hermes-mcp"`. Root `skills/` is unchanged.
+
+## Names
+
+On Claude Code, Cursor, Codex and Grok the plugin and its marketplace are named `anchorbrowser-sdk` (display name "Anchor Browser SDK"). The name `anchorbrowser` on those clients belongs to the hosted MCP plugin in [anchor-mcp-plugin](https://github.com/anchorbrowser/anchor-mcp-plugin), and two plugins with one name cannot be installed together. Gemini CLI, DeepSeek Harness and Hermes have no such overlap and keep `anchorbrowser`. The skill itself is `anchorbrowser` everywhere.
 
 ## Layout
 
