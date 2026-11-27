@@ -33,12 +33,14 @@ This repo is a set of static marketplace manifests plus the skill that teaches e
 
 No local server. No build step.
 
+**Two Anchor plugins, two names.** This repo is the SDK plugin. On Claude Code, Cursor, Codex and Grok it installs as `anchorbrowser-sdk`. The plugin named `anchorbrowser` on those clients is the hosted MCP plugin from [anchor-mcp-plugin](https://github.com/anchorbrowser/anchor-mcp-plugin): OAuth sign-in, no API key, tools instead of SDK code. The two can be installed side by side. On Gemini CLI, DeepSeek Harness and Hermes this repo keeps the name `anchorbrowser`.
+
 ## One-click install
 
 These open the desktop app and confirm before anything is installed.
 
 <p align="center">
-  <a href="https://cursor.com/link/prompt?text=%2Fadd-plugin%20anchorbrowser%40https%3A%2F%2Fgithub.com%2Fanchorbrowser%2Fanchorbrowser-plugin"><img src="https://img.shields.io/badge/Add_to_Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Add to Cursor" /></a>
+  <a href="https://cursor.com/link/prompt?text=%2Fadd-plugin%20anchorbrowser-sdk%40https%3A%2F%2Fgithub.com%2Fanchorbrowser%2Fanchorbrowser-plugin"><img src="https://img.shields.io/badge/Add_to_Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Add to Cursor" /></a>
   <a href="https://cdn.jsdelivr.net/gh/anchorbrowser/anchorbrowser-plugin@main/docs/install-hermes.html"><img src="https://img.shields.io/badge/Install_in_Hermes-5B4BDB?style=for-the-badge" alt="Install in Hermes" /></a>
 </p>
 
@@ -48,17 +50,17 @@ These open the desktop app and confirm before anything is installed.
 
 ```text
 /plugin marketplace add anchorbrowser/anchorbrowser-plugin
-/plugin install anchorbrowser@anchorbrowser
+/plugin install anchorbrowser-sdk@anchorbrowser-sdk
 ```
 
 ---
 
 **Cursor** <img src="https://cdn.simpleicons.org/cursor/000000" width="16" height="16" alt="" />
 
-[![Add to Cursor](https://img.shields.io/badge/Add_to_Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white)](https://cursor.com/link/prompt?text=%2Fadd-plugin%20anchorbrowser%40https%3A%2F%2Fgithub.com%2Fanchorbrowser%2Fanchorbrowser-plugin)
+[![Add to Cursor](https://img.shields.io/badge/Add_to_Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white)](https://cursor.com/link/prompt?text=%2Fadd-plugin%20anchorbrowser-sdk%40https%3A%2F%2Fgithub.com%2Fanchorbrowser%2Fanchorbrowser-plugin)
 
 ```text
-/add-plugin anchorbrowser@https://github.com/anchorbrowser/anchorbrowser-plugin
+/add-plugin anchorbrowser-sdk@https://github.com/anchorbrowser/anchorbrowser-plugin
 ```
 
 Or add the marketplace by hand:
@@ -73,7 +75,7 @@ cursor-agent plugin marketplace add https://github.com/anchorbrowser/anchorbrows
 
 ```bash
 codex plugin marketplace add anchorbrowser/anchorbrowser-plugin
-codex plugin add anchorbrowser@anchorbrowser
+codex plugin add anchorbrowser-sdk@anchorbrowser-sdk
 ```
 
 ---
@@ -82,7 +84,7 @@ codex plugin add anchorbrowser@anchorbrowser
 
 ```bash
 grok plugin marketplace add anchorbrowser/anchorbrowser-plugin
-grok plugin install anchorbrowser --trust
+grok plugin install anchorbrowser-sdk --trust
 ```
 
 ---
@@ -129,7 +131,7 @@ Docs: [Discover and install plugins](https://code.claude.com/docs/en/discover-pl
 
 ```text
 /plugin marketplace add anchorbrowser/anchorbrowser-plugin
-/plugin install anchorbrowser@anchorbrowser
+/plugin install anchorbrowser-sdk@anchorbrowser-sdk
 ```
 
 Pick a scope when the details pane opens:
@@ -148,7 +150,7 @@ If that warns about re-reading the conversation, use `/reload-plugins --force`.
 
 ```bash
 claude plugin marketplace add anchorbrowser/anchorbrowser-plugin
-claude plugin install anchorbrowser@anchorbrowser
+claude plugin install anchorbrowser-sdk@anchorbrowser-sdk
 ```
 
 Installs to **user** scope by default.
@@ -159,9 +161,9 @@ CLI installs load the next time you start Claude Code, or after `/reload-plugins
 
 **Or browse**
 
-Run `/plugin` → **Discover** and install `anchorbrowser` from the `anchorbrowser` marketplace.
+Run `/plugin` → **Discover** and install `anchorbrowser-sdk` from the `anchorbrowser-sdk` marketplace.
 
-The skill is `/anchorbrowser:anchorbrowser`.
+The skill is `/anchorbrowser-sdk:anchorbrowser`.
 
 Set `ANCHORBROWSER_API_KEY` and ask Claude to drive a page.
 
@@ -169,12 +171,12 @@ Set `ANCHORBROWSER_API_KEY` and ask Claude to drive a page.
 
 ### <img src="https://cdn.simpleicons.org/cursor/000000" width="20" height="20" alt="" /> Cursor
 
-[![Add to Cursor](https://img.shields.io/badge/Add_to_Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white)](https://cursor.com/link/prompt?text=%2Fadd-plugin%20anchorbrowser%40https%3A%2F%2Fgithub.com%2Fanchorbrowser%2Fanchorbrowser-plugin)
+[![Add to Cursor](https://img.shields.io/badge/Add_to_Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white)](https://cursor.com/link/prompt?text=%2Fadd-plugin%20anchorbrowser-sdk%40https%3A%2F%2Fgithub.com%2Fanchorbrowser%2Fanchorbrowser-plugin)
 
 That opens Cursor with this command ready to run. Confirm the prompt to install.
 
 ```text
-/add-plugin anchorbrowser@https://github.com/anchorbrowser/anchorbrowser-plugin
+/add-plugin anchorbrowser-sdk@https://github.com/anchorbrowser/anchorbrowser-plugin
 ```
 
 You can also add the marketplace, then install the plugin in the UI.
@@ -189,7 +191,7 @@ cursor-agent plugin marketplace add https://github.com/anchorbrowser/anchorbrows
 
 Then either:
 
-- **Customize** in the sidebar → find `anchorbrowser` → **Install** (project or user scope)
+- **Customize** in the sidebar → find `anchorbrowser-sdk` → **Install** (project or user scope)
 
 - Or run `cursor-agent`, type `/plugin`, open **Marketplace**, and install it there
 
@@ -199,7 +201,7 @@ Then either:
 
 ```bash
 codex plugin marketplace add anchorbrowser/anchorbrowser-plugin
-codex plugin add anchorbrowser@anchorbrowser
+codex plugin add anchorbrowser-sdk@anchorbrowser-sdk
 ```
 
 Docs: [Build plugins](https://developers.openai.com/codex/plugins/build).
@@ -212,7 +214,7 @@ Refresh later with `codex plugin marketplace upgrade`.
 
 ```bash
 grok plugin marketplace add anchorbrowser/anchorbrowser-plugin
-grok plugin install anchorbrowser --trust
+grok plugin install anchorbrowser-sdk --trust
 ```
 
 `--trust` is required to activate the plugin. Without it, Grok shows the source and stops.

@@ -1,7 +1,7 @@
 name: anchorbrowser
 version: 0.1.0
 description: "Anchor Browser cloud Chromium backend: residential proxies by country, captcha solving, extra stealth, saved profiles and managed logins. Requires ANCHOR_API_KEY or ANCHORBROWSER_API_KEY. Set browser.cloud_provider: anchorbrowser."
-author: AnchorBrowser
+author: Anchor Browser
 kind: backend
 provides_browser_providers:
   - anchorbrowser

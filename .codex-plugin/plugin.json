@@ -1,13 +1,13 @@
 {
-  "name": "anchorbrowser",
+  "name": "anchorbrowser-sdk",
   "version": "0.1.0",
-  "description": "AnchorBrowser SDK — browser automation for agents",
+  "description": "Anchor Browser SDK: browser automation for agents",
   "author": {
-    "name": "AnchorBrowser",
+    "name": "Anchor Browser",
     "url": "https://anchorbrowser.io"
   },
   "homepage": "https://anchorbrowser.io",
-  "repository": "https://github.com/anchorbrowser/AnchorBrowser-SDK-Typescript",
+  "repository": "https://github.com/anchorbrowser/anchorbrowser-plugin",
   "license": "MIT",
   "keywords": [
     "browser",
@@ -16,10 +16,10 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "AnchorBrowser",
+    "displayName": "Anchor Browser SDK",
     "shortDescription": "Browser automation for agents",
-    "longDescription": "Browser automation for AI agents: navigate, extract, screenshot, and interact with real web pages via the AnchorBrowser TypeScript SDK.",
-    "developerName": "AnchorBrowser",
+    "longDescription": "Browser automation for AI agents: navigate, extract, screenshot, and interact with real web pages via the Anchor Browser TypeScript SDK.",
+    "developerName": "Anchor Browser",
     "category": "Automation",
     "capabilities": [],
     "websiteURL": "https://anchorbrowser.io",

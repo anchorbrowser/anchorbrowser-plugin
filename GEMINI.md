@@ -1,4 +1,4 @@
-# AnchorBrowser TypeScript SDK
+# Anchor Browser TypeScript SDK
 
 Use the [`anchorbrowser`](https://www.npmjs.com/package/anchorbrowser) npm package. Do **not** use the deprecated `anchorbrowser` CLI (`@anchor-browser/cli`).
 
