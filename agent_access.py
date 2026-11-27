@@ -70,6 +70,12 @@ def api_request(
             message = err.get("message") or json.dumps(err)
         else:
             message = err or response.text[:300]
+        if response.status_code == 404 and "disabled" in str(message).lower():
+            raise RuntimeError(
+                "Anchor Agent Access is unavailable right now. Create an API key at "
+                "https://app.anchorbrowser.io/api-keys and paste it with: "
+                "hermes anchorbrowser setup"
+            )
         raise RuntimeError(
             f"Anchor Agent Access {method.upper()} {path} failed "
             f"({response.status_code}): {message}\nDocs: {_DOCS}"
@@ -202,7 +208,7 @@ def run_setup() -> None:
             print("Dashboard keys: https://app.anchorbrowser.io/api-keys")
             print(f"Agent Access:   {_DOCS}")
             print("1) Paste a dashboard API key")
-            print("2) Obtain a key via Agent Access (challenge, token TTL ~120s)")
+            print("2) Obtain a key via Agent Access (unavailable while the flow is suspended)")
             choice = input("Choice [1/2]: ").strip() or "1"
             if choice == "2":
                 payload = fetch_challenge()

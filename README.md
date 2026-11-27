@@ -312,7 +312,7 @@ Cloud sessions, identities, proxies, and CAPTCHA solving need an Anchor Browser 
 export ANCHORBROWSER_API_KEY="your-api-key"   # also accepts ANCHOR_API_KEY
 ```
 
-Get a key at [app.anchorbrowser.io](https://app.anchorbrowser.io/api-keys). Hermes can also run `hermes anchorbrowser setup` (paste a key or Agent Access).
+Get a key at [app.anchorbrowser.io](https://app.anchorbrowser.io/api-keys). In Hermes, run `hermes anchorbrowser setup` to paste it. Agent Access is suspended for now.
 
 Install the `anchorbrowser` package from npm when using the TypeScript SDK.
 

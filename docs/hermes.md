@@ -24,9 +24,9 @@ companion MCP package in [`../hermes-mcp`](../hermes-mcp). It adds Anchor's thre
 hermes plugins install anchorbrowser/anchorbrowser-plugin --enable
 ```
 
-Get an API key at <https://app.anchorbrowser.io/api-keys>, or run `hermes anchorbrowser setup` to paste one
-or obtain one through [Agent Access](https://docs.anchorbrowser.io/quickstart/agent-access) with no dashboard
-account. Then select the backend, either in `hermes tools` (Browser Automation, Anchor Browser) or in
+Get an API key at <https://app.anchorbrowser.io/api-keys>, then run `hermes anchorbrowser setup` to paste it.
+[Agent Access](https://docs.anchorbrowser.io/quickstart/agent-access), which issues a key with no dashboard
+account, is suspended for now. Then select the backend, either in `hermes tools` (Browser Automation, Anchor Browser) or in
 `config.yaml`:
 
 ```yaml
